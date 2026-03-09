@@ -4,40 +4,21 @@ import { useState, FormEvent } from "react";
 
 export default function Newsletter() {
   const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  const handleSubmit = (e: FormEvent) => { e.preventDefault(); setSubmitted(true); };
 
   return (
-    <section className="newsletter" id="contact">
-      <div className="container">
-        <div className="newsletter-content">
-          <p className="section-tag">Newsletter</p>
-          <h2 className="section-title">Stay in Touch</h2>
-          <p className="newsletter-text">
-            Be the first to know about new collections and exclusive offers.
-          </p>
-          {submitted ? (
-            <p className="newsletter-thanks">
-              Thank you for subscribing.
-            </p>
-          ) : (
-            <form className="newsletter-form" onSubmit={handleSubmit}>
-              <div className="newsletter-input-wrap">
-                <input
-                  type="email"
-                  placeholder="Your email address"
-                  required
-                />
-                <button type="submit" className="btn-newsletter">
-                  Subscribe
-                </button>
-              </div>
-            </form>
-          )}
-        </div>
+    <section className="lv-newsletter" id="contact">
+      <div className="lv-newsletter-inner">
+        <h2>Stay Informed</h2>
+        <p>Receive updates on new collections and exclusive pieces.</p>
+        {submitted ? (
+          <p className="lv-thanks">Thank you for subscribing.</p>
+        ) : (
+          <form onSubmit={handleSubmit} className="lv-newsletter-form">
+            <input type="email" placeholder="Email address" required />
+            <button type="submit">Subscribe</button>
+          </form>
+        )}
       </div>
     </section>
   );

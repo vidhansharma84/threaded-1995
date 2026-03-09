@@ -9,30 +9,14 @@ const images = [
 
 export default function InstagramGallery() {
   return (
-    <section className="instagram-gallery">
-      <div className="container">
-        <div className="section-header">
-          <p className="section-tag">@threaded1995</p>
-          <h2 className="section-title">Follow Our Journey</h2>
-        </div>
+    <section className="lv-instagram">
+      <div className="lv-insta-header">
+        <h2>@threaded1995</h2>
       </div>
-      <div className="insta-grid">
+      <div className="lv-insta-grid">
         {images.map((src, i) => (
-          <a href="#" className="insta-item" key={i}>
-            <Image
-              src={src}
-              alt={`Instagram post ${i + 1}`}
-              fill
-              sizes="(max-width: 768px) 50vw, 25vw"
-              style={{ objectFit: "cover" }}
-            />
-            <div className="insta-overlay">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                <circle cx="12" cy="12" r="5" />
-                <circle cx="17.5" cy="6.5" r="1.5" fill="white" stroke="none" />
-              </svg>
-            </div>
+          <a href="#" className="lv-insta-item" key={i}>
+            <Image src={src} alt={`Instagram ${i + 1}`} fill sizes="25vw" style={{ objectFit: "cover" }} />
           </a>
         ))}
       </div>

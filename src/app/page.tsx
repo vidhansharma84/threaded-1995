@@ -3,7 +3,6 @@
 import { useState, useCallback, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
 import Collections from "@/components/Collections";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import WhyUs from "@/components/WhyUs";
@@ -27,9 +26,7 @@ export default function Home() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
+          if (entry.isIntersecting) entry.target.classList.add("visible");
         });
       },
       { threshold: 0.08, rootMargin: "0px 0px -60px 0px" }
@@ -47,21 +44,8 @@ export default function Home() {
     (product: Product) => {
       setCart((prev) => {
         const existing = prev.find((i) => i.id === product.id);
-        if (existing) {
-          return prev.map((i) =>
-            i.id === product.id ? { ...i, qty: i.qty + 1 } : i
-          );
-        }
-        return [
-          ...prev,
-          {
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            image: product.image,
-            qty: 1,
-          },
-        ];
+        if (existing) return prev.map((i) => i.id === product.id ? { ...i, qty: i.qty + 1 } : i);
+        return [...prev, { id: product.id, name: product.name, price: product.price, image: product.image, qty: 1 }];
       });
       showToast(`${product.name} added to cart!`);
     },
@@ -69,11 +53,7 @@ export default function Home() {
   );
 
   const handleUpdateQty = useCallback((id: number, delta: number) => {
-    setCart((prev) =>
-      prev
-        .map((i) => (i.id === id ? { ...i, qty: i.qty + delta } : i))
-        .filter((i) => i.qty > 0)
-    );
+    setCart((prev) => prev.map((i) => (i.id === id ? { ...i, qty: i.qty + delta } : i)).filter((i) => i.qty > 0));
   }, []);
 
   const handleRemove = useCallback((id: number) => {
@@ -84,13 +64,8 @@ export default function Home() {
 
   return (
     <>
-      <Navbar
-        cartCount={cartCount}
-        onCartClick={() => setCartOpen(true)}
-        onSearchClick={() => setSearchOpen(true)}
-      />
+      <Navbar cartCount={cartCount} onCartClick={() => setCartOpen(true)} onSearchClick={() => setSearchOpen(true)} />
       <Hero />
-      <Marquee />
       <div className="fade-in"><Collections /></div>
       <div className="fade-in"><FeaturedProducts onAddToCart={handleAddToCart} /></div>
       <div className="fade-in"><WhyUs /></div>
@@ -99,17 +74,8 @@ export default function Home() {
       <div className="fade-in"><InstagramGallery /></div>
       <div className="fade-in"><Newsletter /></div>
       <Footer />
-      <CartDrawer
-        open={cartOpen}
-        onClose={() => setCartOpen(false)}
-        items={cart}
-        onUpdateQty={handleUpdateQty}
-        onRemove={handleRemove}
-      />
-      <SearchOverlay
-        open={searchOpen}
-        onClose={() => setSearchOpen(false)}
-      />
+      <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} items={cart} onUpdateQty={handleUpdateQty} onRemove={handleRemove} />
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
       <Toast message={toast.message} visible={toast.visible} />
     </>
   );

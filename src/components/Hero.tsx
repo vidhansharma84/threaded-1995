@@ -15,23 +15,8 @@ export default function Hero() {
       </div>
       <div className="hero-overlay" />
       <div className="hero-content">
-        <p className="hero-tag">Handcrafted Since 1995</p>
-        <h1 className="hero-title">
-          The Art of
-          <br />
-          Crochet
-        </h1>
-        <p className="hero-subtitle">
-          Each piece lovingly handcrafted with premium natural fibers.
-        </p>
-        <div className="hero-btns">
-          <a href="#shop" className="btn-hero">
-            Discover the Collection
-          </a>
-        </div>
-      </div>
-      <div className="hero-scroll">
-        <div className="scroll-line" />
+        <h1 className="hero-title">The Art of Crochet</h1>
+        <a href="#collections" className="cta-link">Discover</a>
       </div>
     </section>
   );
