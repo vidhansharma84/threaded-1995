@@ -11,7 +11,7 @@ export const products: Product[] = [
     price: 89,
     rating: 5,
     reviewCount: 48,
-    image: "https://images.pexels.com/photos/10566057/pexels-photo-10566057.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://images.pexels.com/photos/10566057/pexels-photo-10566057.jpeg?auto=compress&cs=tinysrgb&w=800",
     badge: "New",
   },
   {
@@ -22,7 +22,7 @@ export const products: Product[] = [
     originalPrice: 82,
     rating: 4,
     reviewCount: 36,
-    image: "https://images.pexels.com/photos/6633323/pexels-photo-6633323.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://images.pexels.com/photos/6633323/pexels-photo-6633323.jpeg?auto=compress&cs=tinysrgb&w=800",
     badge: "-20%",
     badgeClass: "badge-sale",
   },
@@ -33,7 +33,7 @@ export const products: Product[] = [
     price: 120,
     rating: 5,
     reviewCount: 72,
-    image: "https://images.pexels.com/photos/5371357/pexels-photo-5371357.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://images.pexels.com/photos/5371357/pexels-photo-5371357.jpeg?auto=compress&cs=tinysrgb&w=800",
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ export const products: Product[] = [
     price: 28,
     rating: 5,
     reviewCount: 112,
-    image: "https://images.pexels.com/photos/2460527/pexels-photo-2460527.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://images.pexels.com/photos/2460527/pexels-photo-2460527.jpeg?auto=compress&cs=tinysrgb&w=800",
     badge: "Bestseller",
   },
   {
@@ -52,7 +52,7 @@ export const products: Product[] = [
     price: 135,
     rating: 5,
     reviewCount: 28,
-    image: "https://images.pexels.com/photos/8093198/pexels-photo-8093198.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://images.pexels.com/photos/8093198/pexels-photo-8093198.jpeg?auto=compress&cs=tinysrgb&w=800",
     badge: "Limited",
     badgeClass: "badge-limited",
   },
@@ -63,28 +63,7 @@ export const products: Product[] = [
     price: 110,
     rating: 4,
     reviewCount: 54,
-    image: "https://images.pexels.com/photos/1374128/pexels-photo-1374128.jpeg?auto=compress&cs=tinysrgb&w=600",
-  },
-  {
-    id: 7,
-    name: "Cozy Knit Blanket",
-    category: "decor",
-    price: 75,
-    originalPrice: 88,
-    rating: 4,
-    reviewCount: 41,
-    image: "https://images.pexels.com/photos/5806980/pexels-photo-5806980.jpeg?auto=compress&cs=tinysrgb&w=600",
-    badge: "-15%",
-    badgeClass: "badge-sale",
-  },
-  {
-    id: 8,
-    name: "Macrame Plant Hanger",
-    category: "decor",
-    price: 45,
-    rating: 5,
-    reviewCount: 95,
-    image: "https://images.pexels.com/photos/6627241/pexels-photo-6627241.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://images.pexels.com/photos/1374128/pexels-photo-1374128.jpeg?auto=compress&cs=tinysrgb&w=800",
   },
 ];
 
@@ -116,8 +95,8 @@ export default function FeaturedProducts({ onAddToCart }: FeaturedProductsProps)
     <section className="featured-products" id="shop">
       <div className="container">
         <div className="section-header">
-          <p className="section-tag">Handpicked for You</p>
-          <h2 className="section-title">Featured Products</h2>
+          <p className="section-tag">Curated Selection</p>
+          <h2 className="section-title">Featured Pieces</h2>
           <div className="product-filters">
             {filters.map((f) => (
               <button
@@ -140,6 +119,9 @@ export default function FeaturedProducts({ onAddToCart }: FeaturedProductsProps)
               wishlisted={wishlist.has(product.id)}
             />
           ))}
+        </div>
+        <div className="products-view-all">
+          <a href="#" className="btn-view-all">View All Products</a>
         </div>
       </div>
     </section>

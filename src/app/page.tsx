@@ -23,7 +23,6 @@ export default function Home() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [toast, setToast] = useState({ message: "", visible: false });
 
-  // Scroll-triggered fade-in animation
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -33,7 +32,7 @@ export default function Home() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -60px 0px" }
     );
     document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
     return () => observer.disconnect();
@@ -95,9 +94,9 @@ export default function Home() {
       <div className="fade-in"><Collections /></div>
       <div className="fade-in"><FeaturedProducts onAddToCart={handleAddToCart} /></div>
       <div className="fade-in"><WhyUs /></div>
-      <div className="fade-in"><InstagramGallery /></div>
       <div className="fade-in"><About /></div>
       <div className="fade-in"><Testimonials /></div>
+      <div className="fade-in"><InstagramGallery /></div>
       <div className="fade-in"><Newsletter /></div>
       <Footer />
       <CartDrawer

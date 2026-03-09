@@ -14,31 +14,27 @@ export default function Newsletter() {
     <section className="newsletter" id="contact">
       <div className="container">
         <div className="newsletter-content">
-          <p className="section-tag">Stay Connected</p>
-          <h2 className="section-title">Join the Threaded Family</h2>
+          <p className="section-tag">Newsletter</p>
+          <h2 className="section-title">Stay in Touch</h2>
           <p className="newsletter-text">
-            Subscribe to receive early access to new collections, exclusive
-            offers, and behind-the-scenes glimpses of our handcrafted process.
+            Be the first to know about new collections and exclusive offers.
           </p>
           {submitted ? (
-            <p style={{ fontSize: "1rem", marginTop: "1.5rem", color: "var(--color-sage-light)" }}>
-              Thank you for subscribing! Welcome to the family.
+            <p className="newsletter-thanks">
+              Thank you for subscribing.
             </p>
           ) : (
             <form className="newsletter-form" onSubmit={handleSubmit}>
               <div className="newsletter-input-wrap">
                 <input
                   type="email"
-                  placeholder="Enter your email address"
+                  placeholder="Your email address"
                   required
                 />
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn-newsletter">
                   Subscribe
                 </button>
               </div>
-              <p className="newsletter-note">
-                No spam, ever. Unsubscribe anytime.
-              </p>
             </form>
           )}
         </div>

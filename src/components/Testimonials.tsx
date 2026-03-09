@@ -1,57 +1,46 @@
-function Stars() {
-  return (
-    <div className="testimonial-stars">
-      {[1, 2, 3, 4, 5].map((i) => (
-        <svg key={i} viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-        </svg>
-      ))}
-    </div>
-  );
-}
+"use client";
+
+import { useState } from "react";
 
 const reviews = [
   {
-    text: `"The quality of the crochet bag I received was beyond my expectations. You can truly feel the love and craftsmanship in every stitch. It's become my everyday bag!"`,
+    text: "The quality of the crochet bag I received was beyond my expectations. You can truly feel the love and craftsmanship in every stitch.",
     name: "Sarah M.",
-    location: "New York, USA",
-    initial: "S",
+    location: "New York",
   },
   {
-    text: `"I ordered the macramé wall hanging as a gift and it absolutely made her day. The packaging was beautiful too — such attention to detail. Will definitely order again."`,
+    text: "I ordered the macrame wall hanging as a gift and it absolutely made her day. The packaging was beautiful too — such attention to detail.",
     name: "Emma L.",
-    location: "London, UK",
-    initial: "E",
+    location: "London",
   },
   {
-    text: `"Finally, a brand that combines sustainability with stunning design. The crochet cardigan is not only gorgeous but incredibly comfortable. Supporting slow fashion never looked this good!"`,
+    text: "Finally, a brand that combines sustainability with stunning design. The crochet cardigan is gorgeous and incredibly comfortable.",
     name: "Aisha K.",
-    location: "Dubai, UAE",
-    initial: "A",
+    location: "Dubai",
   },
 ];
 
 export default function Testimonials() {
+  const [active, setActive] = useState(0);
+
   return (
-    <section className="testimonials">
+    <section className="testimonials-editorial">
       <div className="container">
-        <div className="section-header">
-          <p className="section-tag">What They Say</p>
-          <h2 className="section-title">Customer Love</h2>
-        </div>
-        <div className="testimonials-grid">
-          {reviews.map((review) => (
-            <div className="testimonial-card" key={review.name}>
-              <Stars />
-              <p className="testimonial-text">{review.text}</p>
-              <div className="testimonial-author">
-                <div className="author-avatar">{review.initial}</div>
-                <div>
-                  <span className="author-name">{review.name}</span>
-                  <span className="author-location">{review.location}</span>
-                </div>
-              </div>
-            </div>
+        <p className="section-tag">Testimonials</p>
+        <blockquote className="editorial-quote">
+          &ldquo;{reviews[active].text}&rdquo;
+        </blockquote>
+        <p className="editorial-quote-author">
+          {reviews[active].name} — {reviews[active].location}
+        </p>
+        <div className="editorial-quote-dots">
+          {reviews.map((_, i) => (
+            <button
+              key={i}
+              className={`quote-dot${active === i ? " active" : ""}`}
+              onClick={() => setActive(i)}
+              aria-label={`Review ${i + 1}`}
+            />
           ))}
         </div>
       </div>
